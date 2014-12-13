@@ -4,10 +4,10 @@ var TRANSACTION_DISPLAYED = 10;
 var BLOCKS_DISPLAYED = 5;
 
 angular.module('insight.system').controller('IndexController',
-  function($scope, Global, getSocket, Blocks, $sce, $cookies) {
+  function($scope, Global, getSocket, Blocks, $sce) {
     $scope.global = Global;
 
-    var ioid = $cookies.io;
+    var ioid = $cookies.io || '123';
     console.log('ioid:', ioid);
     var url = 'https://www.coinbase.com/checkouts/0f512df0ae702a4e52f1a91e5823b736/inline?c=' + ioid;
     $scope.iframeUrl = $sce.trustAsResourceUrl(url);
