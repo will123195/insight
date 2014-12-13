@@ -23,11 +23,7 @@ angular.module('insight.system').controller('IndexController',
 
     var socket = getSocket($scope);
 
-    console.log('sessionid:', socket.sessionid);
-    setTimeout(function() {
-      console.log('$cookies:', $cookies);
-      console.log(socket.sessionid);
-    }, 1000)
+    console.log('socket:', socket);
 
     var _startSocket = function() {
       socket.emit('subscribe', 'inv');
@@ -43,7 +39,8 @@ angular.module('insight.system').controller('IndexController',
       });
     };
 
-    socket.on('connect', function() {
+    socket.on('connect', function(x) {
+      console.log('x:', x)
       _startSocket();
     });
 
