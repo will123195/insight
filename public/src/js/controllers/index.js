@@ -7,7 +7,9 @@ angular.module('insight.system').controller('IndexController',
   function($scope, Global, getSocket, Blocks, $sce, $cookies) {
     $scope.global = Global;
 
-    var ioid = $cookies.io || '123';
+    console.log('$cookies:', $cookies)
+
+    var ioid = $cookies.io;
     console.log('ioid:', ioid);
     var url = 'https://www.coinbase.com/checkouts/0f512df0ae702a4e52f1a91e5823b736/inline?c=' + ioid;
     $scope.iframeUrl = $sce.trustAsResourceUrl(url);
