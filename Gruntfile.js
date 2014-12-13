@@ -126,7 +126,7 @@ module.exports = function(grunt) {
   grunt.registerTask('compile', ['nggettext_compile', 'concat', 'uglify', 'cssmin']);
 
   // css
-  grunt.registerTask('css', ['cssmin']);
+  grunt.registerTask('css', ['concat:css', 'cssmin']);
 
 
 };
