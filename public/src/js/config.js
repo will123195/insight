@@ -21,7 +21,7 @@ angular.module('insight').config(function($routeProvider) {
     }).
     when('/', {
       templateUrl: '/views/index.html',
-      title: 'Home'
+      title: 'Bitcoin Blockchain Direct Download'
     }).
     when('/blocks', {
       templateUrl: '/views/block_list.html',
