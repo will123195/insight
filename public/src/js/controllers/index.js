@@ -18,7 +18,7 @@ angular.module('insight.system').controller('IndexController',
 
     var socket = getSocket($scope);
 
-    var _startSocket = function() { 
+    var _startSocket = function() {
       socket.emit('subscribe', 'inv');
       socket.on('tx', function(tx) {
         $scope.txs.unshift(tx);
@@ -50,4 +50,38 @@ angular.module('insight.system').controller('IndexController',
 
     $scope.txs = [];
     $scope.blocks = [];
+
+
+
+
+    // Add an event listener for messages posted to this window
+    window.addEventListener('message', receiveMessage, false);
+
+    // Define the message handler function
+    function receiveMessage(event) {
+
+      console.log('event:', event);
+
+      // Make sure the message posted to this window is from Coinbase
+      if (event.origin == 'https://www.coinbase.com') {
+        var event_type = event.data.split('|')[0];     // "coinbase_payment_complete"
+        var event_id   = event.data.split('|')[1];     // ID for this payment type
+
+        if (event_type == 'coinbase_payment_complete') {
+          alert('Payment completed for iFrame ' + event_id);
+        }
+        else if (event_type == 'coinbase_payment_mispaid') {
+          alert('Payment mispaid for iFrame ' + event_id);
+        }
+        else if (event_type == 'coinbase_payment_expired') {
+          alert('Payment expired for iFrame ' + event_id);
+        }
+        else {
+          // Do something else, or ignore
+        }
+      }
+    }
+
+
+
   });
