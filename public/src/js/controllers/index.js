@@ -4,7 +4,7 @@ var TRANSACTION_DISPLAYED = 10;
 var BLOCKS_DISPLAYED = 5;
 
 angular.module('insight.system').controller('IndexController',
-  function($scope, Global, getSocket, Blocks, $sce, $cookies) {
+  function($scope, Global, getSocket, Blocks, $sce) {
     $scope.global = Global;
 
     var _getBlocks = function() {
@@ -17,6 +17,8 @@ angular.module('insight.system').controller('IndexController',
     };
 
     var socket = getSocket($scope);
+
+    showiFrame();
 
     var _startSocket = function() {
       socket.emit('subscribe', 'inv');
@@ -33,9 +35,8 @@ angular.module('insight.system').controller('IndexController',
     };
 
     socket.on('connect', function(x) {
-      var id = getSocket($scope).socket.io.engine.id;
-      var url = 'https://www.coinbase.com/checkouts/0f512df0ae702a4e52f1a91e5823b736/inline?c=' + id;
-      $scope.iframeUrl = $sce.trustAsResourceUrl(url);
+
+      showiFrame();
 
       _startSocket();
     });
@@ -56,8 +57,6 @@ angular.module('insight.system').controller('IndexController',
     $scope.blocks = [];
 
 
-
-
     // Add an event listener for messages posted to this window
     window.addEventListener('message', receiveMessage, false);
 
@@ -70,7 +69,7 @@ angular.module('insight.system').controller('IndexController',
         var event_id   = event.data.split('|')[1];     // ID for this payment type
 
         if (event_type == 'coinbase_payment_complete') {
-          getDownloadLink()
+          getDownloadLink();
         }
         else if (event_type == 'coinbase_payment_mispaid') {
           alert('Payment mispaid for iFrame ' + event_id);
@@ -86,15 +85,25 @@ angular.module('insight.system').controller('IndexController',
 
 
     function getDownloadLink() {
-      console.log('c:', getId());
+      var url = 'https://e-coin.com/get-blockchain-download-url.php?c=' + getId();
+      $http.get(url)
+        .success(function(data, status, headers, config) {
+          console.log(data);
+        })
+        .error(function(data, status, headers, config) {
+          console.log('We could not verify your order. Reference # ' + getId());
+        });
     }
 
     function getId() {
-      var scopedSocket = getSocket($scope);
-      console.log('scopedSocket:', scopedSocket)
-      var id = scopedSocket.socket.io.engine.id;
-      console.log('id:', id);
-      return id;
+      return getSocket($scope).socket.io.engine.id;
+    }
+
+    function showiFrame() {
+      if (getId()) {
+        var url = 'https://www.coinbase.com/checkouts/0f512df0ae702a4e52f1a91e5823b736/inline?c=' + getId();
+        $scope.iframeUrl = $sce.trustAsResourceUrl(url);
+      }
     }
 
 
