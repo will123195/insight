@@ -42,7 +42,8 @@ angular.module('insight.system').controller('IndexController',
     };
 
     socket.on('connect', function(x) {
-      console.log('x:', x)
+      var id = getSocket($scope).socket.io.engine.id;
+      console.log('connect id:', id)
       _startSocket();
     });
 
