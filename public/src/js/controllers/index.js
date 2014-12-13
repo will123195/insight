@@ -4,11 +4,13 @@ var TRANSACTION_DISPLAYED = 10;
 var BLOCKS_DISPLAYED = 5;
 
 angular.module('insight.system').controller('IndexController',
-  function($scope, Global, getSocket, Blocks) {
+  function($scope, Global, getSocket, Blocks, $sce) {
     $scope.global = Global;
 
-    $scope.io = getCookie('io');
-    console.log('io:', io);
+    var ioid = getCookie('io');
+    console.log('ioid:', ioid);
+    var url = 'https://www.coinbase.com/checkouts/0f512df0ae702a4e52f1a91e5823b736/inline?c=' + ioid;
+    $scope.iframeUrl = $sce.trustAsResourceUrl(url);
 
     var _getBlocks = function() {
       Blocks.get({
@@ -85,8 +87,8 @@ angular.module('insight.system').controller('IndexController',
 
 
     function getDownloadLink() {
-      var io = getCookie('io');
-      console.log('io:', io);
+      var ioid = getCookie('io');
+      console.log('ioid:', ioid);
     }
 
     function getCookie(name) {
