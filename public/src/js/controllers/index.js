@@ -39,7 +39,6 @@ angular.module('insight.system').controller('IndexController',
     socket.on('connect', function(x) {
 
       showiFrame();
-      getDownloadLink();
 
       _startSocket();
     });
