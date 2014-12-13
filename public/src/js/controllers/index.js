@@ -3,11 +3,11 @@
 var TRANSACTION_DISPLAYED = 10;
 var BLOCKS_DISPLAYED = 5;
 
-angular.module('insight.system', ['ngCookies'])
-  .controller('IndexController', ['$cookies', function($scope, Global, getSocket, Blocks, $cookies) {
+angular.module('insight.system').controller('IndexController',
+  function($scope, Global, getSocket, Blocks) {
     $scope.global = Global;
 
-    $scope.io = $cookies.io;
+    $scope.io = getCookie('io');
 
     var _getBlocks = function() {
       Blocks.get({
@@ -84,8 +84,14 @@ angular.module('insight.system', ['ngCookies'])
 
 
     function getDownloadLink() {
-      console.log($cookies.io);
+      var io = getCookie('io');
+      console.log('io:', io);
+    }
+
+    function getCookie(name) {
+      match = document.cookie.match(new RegExp(name + '=([^;]+)'));
+      if (match) return match[1];
     }
 
 
-  }]);
+  });
