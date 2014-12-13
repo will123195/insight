@@ -90,12 +90,20 @@ Price:      <strike>0.10 BTC</strike> <span class="price">now only 0.05 BTC</spa
 
           <h4>How long does it take to get the download link? How long can I use it?</h4>
           <div>
-            Your download link appears instantly after sending your bitcoin payment (it may take a few seconds for your payment to be broadcasted to bitcoin.network). Your download link will continue to work for 8 days.
+            Your download link appears instantly after sending your bitcoin payment (it may take a few seconds for your payment to broadcast to bitcoin.network). Your download link will continue to work for 8 days.
           </div>
 
           <h4>Is this safe? How do I know you haven’t tampered with the file?</h4>
           <div>
             Yes this service is 100% safe and risk-free. Your bitcoin client will verify the entire file. It is impossible to add a new block to a blockchain that has been tampered with. So you can be certain this is the 100% genuine Bitcoin blockchain.
+          </div>
+
+          <h4>Why am I getting 403 Forbidden message when trying to download via command line?</h4>
+          <div>
+            Make sure to put your url in quotes. For example:
+            <pre>wget -O bootstrap.dat 'http://download.bitcoin.network/XXXX-XX-XX/bootstrap.dat?st=XXXXXXXXXXXXXXXXXXXXXX&e=XXXXXXXXXX'</pre>
+            or
+            <pre>curl -o 'bootstrap.dat' 'http://download.bitcoin.network/XXXX-XX-XX/bootstrap.dat?st=XXXXXXXXXXXXXXXXXXXXXX&e=XXXXXXXXXX'</pre>
           </div>
 
           <h4>It's not working for me. Can I get a refund?</h4>
@@ -105,7 +113,7 @@ Price:      <strike>0.10 BTC</strike> <span class="price">now only 0.05 BTC</spa
 
           <h4>How long does it take to download?</h4>
           <div>
-            About 1 hour on a 40mbps connection such as Verizon FiOS.
+            Download times vary greatly depending on the speed of your connection. Downloading to a data center like AWS EC2 takes about 15 minutes. Downloading via 1.5MBps broadband can take about 5 hours.
           </div>
 
           <h4>How do I import bootstrap.dat after I download it?</h4>
@@ -113,11 +121,6 @@ Price:      <strike>0.10 BTC</strike> <span class="price">now only 0.05 BTC</spa
             The official instructions are available here:<br />
             <a href="https://github.com/bitcoin/bitcoin/blob/master/doc/bootstrap.md#importing-the-blockchain" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/doc/bootstrap.md#importing-the-blockchain</a><br />
             Scroll to the section called "Importing the blockchain".
-          </div>
-
-          <h4>I lost my download link! What do I do?</h4>
-          <div>
-            Please email <a href="mailto:support@e-coin.com">support@e-coin.com</a> with your order number or bitcoin address that you sent your payment from within 8 days of placing your order.
           </div>
 
           <h4>Oops, I sent the wrong payment amount. What do I do?</h4>
