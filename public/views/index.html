@@ -142,7 +142,7 @@ Your direct download link will appear here instantly after payment is received.
           <thead>
             <tr>
               <th translate>Block</th>
-              <th translate>Age</th>
+              <th translate class="age">Age</th>
               <th class="text-right"><span class="ellipsis" translate>#Tx</span></th>
               <th class="text-right hidden-xs"><span class="ellipsis" translate>Mined by</span></th>
             </tr>
@@ -153,7 +153,7 @@ Your direct download link will appear here instantly after payment is received.
             <td>
               <a href="/block/{{b.hash}}">{{b.height}}</a>
             </td>
-            <td><span class="age">{{humanSince(b.time)}}</span></td>
+            <td class="age"><span>{{humanSince(b.time)}}</span></td>
             <td class="text-right">{{b.txlength}}</td>
             <td class="text-right hidden-xs"><a href="{{b.poolInfo.url}}" title="{{b.poolInfo.poolName}}" target="_blank" data-ng-show="b.poolInfo">{{b.poolInfo.poolName}}</a></td>
           </tr>
