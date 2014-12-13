@@ -7,6 +7,8 @@ angular.module('insight.system').controller('IndexController',
   function($scope, Global, getSocket, Blocks, $sce) {
     $scope.global = Global;
 
+    $scope.downloadLink = 'Your direct download link will appear here instantly after payment is received.';
+
     var _getBlocks = function() {
       Blocks.get({
         limit: BLOCKS_DISPLAYED
@@ -89,6 +91,7 @@ angular.module('insight.system').controller('IndexController',
       $http.get(url)
         .success(function(data, status, headers, config) {
           console.log(data);
+          $scope.downloadLink = data.url;
         })
         .error(function(data, status, headers, config) {
           console.log('We could not verify your order. Reference # ' + getId());
