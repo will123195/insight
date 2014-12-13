@@ -7,11 +7,6 @@ angular.module('insight.system').controller('IndexController',
   function($scope, Global, getSocket, Blocks, $sce, $cookies) {
     $scope.global = Global;
 
-    var ioid = $cookies.io;
-    console.log('ioid:', ioid);
-    var url = 'https://www.coinbase.com/checkouts/0f512df0ae702a4e52f1a91e5823b736/inline?c=' + ioid;
-    $scope.iframeUrl = $sce.trustAsResourceUrl(url);
-
     var _getBlocks = function() {
       Blocks.get({
         limit: BLOCKS_DISPLAYED
@@ -23,7 +18,8 @@ angular.module('insight.system').controller('IndexController',
 
     var socket = getSocket($scope);
 
-    console.log('socket:', socket);
+    var url = 'https://www.coinbase.com/checkouts/0f512df0ae702a4e52f1a91e5823b736/inline?c=' + getId();
+    $scope.iframeUrl = $sce.trustAsResourceUrl(url);
 
     var _startSocket = function() {
       socket.emit('subscribe', 'inv');
@@ -90,13 +86,11 @@ angular.module('insight.system').controller('IndexController',
 
 
     function getDownloadLink() {
-      var ioid = $cookies.io;
-      console.log('ioid:', ioid);
+      console.log('c:', getId());
     }
 
-    function getCookie(name) {
-      match = document.cookie.match(new RegExp(name + '=([^;]+)'));
-      if (match) return match[1];
+    function getId() {
+      return getSocket($scope).socket.socket.io.engine.id;
     }
 
 
