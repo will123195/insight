@@ -8,6 +8,7 @@ angular.module('insight.system').controller('IndexController',
     $scope.global = Global;
 
     $scope.io = getCookie('io');
+    console.log('io:', io);
 
     var _getBlocks = function() {
       Blocks.get({
