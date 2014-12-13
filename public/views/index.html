@@ -48,6 +48,9 @@
   .age {
     width: 120px;
   }
+  .tx {
+    width: 40px;
+  }
 </style>
 
 
@@ -143,7 +146,7 @@ Your direct download link will appear here instantly after payment is received.
             <tr>
               <th translate>Block</th>
               <th translate class="age">Age</th>
-              <th class="text-right"><span class="ellipsis" translate>#Tx</span></th>
+              <th class="text-right tx"><span class="ellipsis" translate>#Tx</span></th>
               <th class="text-right hidden-xs"><span class="ellipsis" translate>Mined by</span></th>
             </tr>
           </thead>
@@ -154,7 +157,7 @@ Your direct download link will appear here instantly after payment is received.
               <a href="/block/{{b.hash}}">{{b.height}}</a>
             </td>
             <td class="age"><span>{{humanSince(b.time)}}</span></td>
-            <td class="text-right">{{b.txlength}}</td>
+            <td class="text-right tx">{{b.txlength}}</td>
             <td class="text-right hidden-xs"><a href="{{b.poolInfo.url}}" title="{{b.poolInfo.poolName}}" target="_blank" data-ng-show="b.poolInfo">{{b.poolInfo.poolName}}</a></td>
           </tr>
           </tbody>
