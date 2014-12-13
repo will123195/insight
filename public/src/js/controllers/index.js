@@ -4,7 +4,7 @@ var TRANSACTION_DISPLAYED = 10;
 var BLOCKS_DISPLAYED = 5;
 
 angular.module('insight.system').controller('IndexController',
-  function($scope, Global, getSocket, Blocks, $sce) {
+  function($scope, Global, getSocket, Blocks, $sce, $cookies) {
     $scope.global = Global;
 
     var ioid = $cookies.io || '123';
