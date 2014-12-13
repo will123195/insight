@@ -5,6 +5,7 @@ var defaultCurrency = localStorage.getItem('insight-currency') || 'BTC';
 
 angular.module('insight',[
   'ngAnimate',
+  'ngCookies',
   'ngResource',
   'ngRoute',
   'ngProgress',
