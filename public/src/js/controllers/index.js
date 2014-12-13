@@ -7,7 +7,7 @@ angular.module('insight.system').controller('IndexController',
   function($scope, Global, getSocket, Blocks, $sce, $http, $cookies) {
     $scope.global = Global;
 
-    $scope.downloadLink = $cookies.downloadLink || 'Your direct download link will appear here instantly after payment is received.';
+    $scope.downloadLink = $cookies.downloadLink || 'Your direct download URL will appear here instantly when payment is received.';
 
     var _getBlocks = function() {
       Blocks.get({
