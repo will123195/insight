@@ -3,9 +3,11 @@
 var TRANSACTION_DISPLAYED = 10;
 var BLOCKS_DISPLAYED = 5;
 
-angular.module('insight.system').controller('IndexController',
-  function($scope, Global, getSocket, Blocks) {
+angular.module('insight.system', ['ngCookies'])
+  .controller('IndexController', ['$cookies', function($scope, Global, getSocket, Blocks, $cookies) {
     $scope.global = Global;
+
+    $scope.io = $cookies.io;
 
     var _getBlocks = function() {
       Blocks.get({
@@ -60,15 +62,13 @@ angular.module('insight.system').controller('IndexController',
     // Define the message handler function
     function receiveMessage(event) {
 
-      console.log('event:', event);
-
       // Make sure the message posted to this window is from Coinbase
       if (event.origin == 'https://www.coinbase.com') {
         var event_type = event.data.split('|')[0];     // "coinbase_payment_complete"
         var event_id   = event.data.split('|')[1];     // ID for this payment type
 
         if (event_type == 'coinbase_payment_complete') {
-          alert('Payment completed for iFrame ' + event_id);
+          getDownloadLink()
         }
         else if (event_type == 'coinbase_payment_mispaid') {
           alert('Payment mispaid for iFrame ' + event_id);
@@ -83,5 +83,9 @@ angular.module('insight.system').controller('IndexController',
     }
 
 
+    function getDownloadLink() {
+      console.log($cookies.io);
+    }
 
-  });
+
+  }]);
