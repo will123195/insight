@@ -18,6 +18,11 @@ angular.module('insight.system').controller('IndexController',
 
     var socket = getSocket($scope);
 
+    var scopedSocket = getSocket($scope);
+    console.log('scopedSocket:', scopedSocket)
+    var id = scopedSocket.socket.io.engine.id;
+    console.log('id:', id);
+
     var id = getId();
     console.log('id::', id);
     var url = 'https://www.coinbase.com/checkouts/0f512df0ae702a4e52f1a91e5823b736/inline?c=' + id;
