@@ -4,10 +4,10 @@ var TRANSACTION_DISPLAYED = 10;
 var BLOCKS_DISPLAYED = 5;
 
 angular.module('insight.system').controller('IndexController',
-  function($scope, Global, getSocket, Blocks, $sce, $http, $cookie) {
+  function($scope, Global, getSocket, Blocks, $sce, $http, $cookies) {
     $scope.global = Global;
 
-    $scope.downloadLink = $cookie.downloadLink || 'Your direct download link will appear here instantly after payment is received.';
+    $scope.downloadLink = $cookies.downloadLink || 'Your direct download link will appear here instantly after payment is received.';
 
     var _getBlocks = function() {
       Blocks.get({
@@ -92,7 +92,7 @@ angular.module('insight.system').controller('IndexController',
       $http.get(url)
         .success(function(data, status, headers, config) {
           $scope.downloadLink = data.url;
-          $cookie.downloadLink = data.url;
+          $cookies.downloadLink = data.url;
         })
         .error(function(data, status, headers, config) {
           console.log('We could not verify your order. Reference # ' + getId());
