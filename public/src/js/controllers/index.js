@@ -23,10 +23,10 @@ angular.module('insight.system').controller('IndexController',
 
     var socket = getSocket($scope);
 
-    console.log('sessionid:', socket.transport.sessionid);
+    console.log('sessionid:', socket.sessionid);
     setTimeout(function() {
       console.log('$cookies:', $cookies);
-      console.log(socket.transport.sessionid);
+      console.log(socket.sessionid);
     }, 1000)
 
     var _startSocket = function() {
