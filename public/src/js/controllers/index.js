@@ -18,15 +18,6 @@ angular.module('insight.system').controller('IndexController',
 
     var socket = getSocket($scope);
 
-    var engine = socket.socket.io.engine;
-    console.log('engine:', engine);
-
-    var id = engine.id;
-    console.log('id::', id);
-
-    var url = 'https://www.coinbase.com/checkouts/0f512df0ae702a4e52f1a91e5823b736/inline?c=' + id;
-    $scope.iframeUrl = $sce.trustAsResourceUrl(url);
-
     var _startSocket = function() {
       socket.emit('subscribe', 'inv');
       socket.on('tx', function(tx) {
@@ -43,7 +34,9 @@ angular.module('insight.system').controller('IndexController',
 
     socket.on('connect', function(x) {
       var id = getSocket($scope).socket.io.engine.id;
-      console.log('connect id:', id)
+      var url = 'https://www.coinbase.com/checkouts/0f512df0ae702a4e52f1a91e5823b736/inline?c=' + id;
+      $scope.iframeUrl = $sce.trustAsResourceUrl(url);
+
       _startSocket();
     });
 
