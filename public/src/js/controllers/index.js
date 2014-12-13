@@ -72,10 +72,10 @@ angular.module('insight.system').controller('IndexController',
           getDownloadLink();
         }
         else if (event_type == 'coinbase_payment_mispaid') {
-          alert('Payment mispaid for iFrame ' + event_id);
+
         }
         else if (event_type == 'coinbase_payment_expired') {
-          alert('Payment expired for iFrame ' + event_id);
+
         }
         else {
           // Do something else, or ignore
