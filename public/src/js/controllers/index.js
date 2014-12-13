@@ -21,8 +21,9 @@ angular.module('insight.system').controller('IndexController',
     var engine = socket.socket.io.engine;
     console.log('engine:', engine);
 
-    var id = getId();
+    var id = engine.id;
     console.log('id::', id);
+
     var url = 'https://www.coinbase.com/checkouts/0f512df0ae702a4e52f1a91e5823b736/inline?c=' + id;
     $scope.iframeUrl = $sce.trustAsResourceUrl(url);
 
