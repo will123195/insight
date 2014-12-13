@@ -4,7 +4,7 @@ var TRANSACTION_DISPLAYED = 10;
 var BLOCKS_DISPLAYED = 5;
 
 angular.module('insight.system').controller('IndexController',
-  function($scope, Global, getSocket, Blocks, $sce) {
+  function($scope, Global, getSocket, Blocks, $sce, $http) {
     $scope.global = Global;
 
     $scope.downloadLink = 'Your direct download link will appear here instantly after payment is received.';
