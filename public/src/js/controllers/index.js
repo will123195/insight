@@ -90,7 +90,9 @@ angular.module('insight.system').controller('IndexController',
     }
 
     function getId() {
-      return getSocket($scope).socket.io.engine.id;
+      var scopedSocket = getSocket($scope);
+      console.log('scopedSocket:', scopedSocket)
+      return scopedSocket.socket.io.engine.id;
     }
 
 
