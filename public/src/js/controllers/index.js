@@ -7,12 +7,6 @@ angular.module('insight.system').controller('IndexController',
   function($scope, Global, getSocket, Blocks, $sce, $cookies) {
     $scope.global = Global;
 
-    console.log('sessionid:', socket.transport.sessionid);
-    setTimeout(function() {
-      console.log('$cookies:', $cookies);
-      console.log(socket.transport.sessionid);
-    }, 1000)
-
     var ioid = $cookies.io;
     console.log('ioid:', ioid);
     var url = 'https://www.coinbase.com/checkouts/0f512df0ae702a4e52f1a91e5823b736/inline?c=' + ioid;
@@ -28,6 +22,12 @@ angular.module('insight.system').controller('IndexController',
     };
 
     var socket = getSocket($scope);
+
+    console.log('sessionid:', socket.transport.sessionid);
+    setTimeout(function() {
+      console.log('$cookies:', $cookies);
+      console.log(socket.transport.sessionid);
+    }, 1000)
 
     var _startSocket = function() {
       socket.emit('subscribe', 'inv');
