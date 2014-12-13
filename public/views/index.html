@@ -45,6 +45,9 @@
   .faq {
     margin-bottom: 150px;
   }
+  .age {
+    width: 120px;
+  }
 </style>
 
 
@@ -150,7 +153,7 @@ Your direct download link will appear here instantly after payment is received.
             <td>
               <a href="/block/{{b.hash}}">{{b.height}}</a>
             </td>
-            <td><span class="ellipsis">{{humanSince(b.time)}}</span></td>
+            <td><span class="age">{{humanSince(b.time)}}</span></td>
             <td class="text-right">{{b.txlength}}</td>
             <td class="text-right hidden-xs"><a href="{{b.poolInfo.url}}" title="{{b.poolInfo.poolName}}" target="_blank" data-ng-show="b.poolInfo">{{b.poolInfo.poolName}}</a></td>
           </tr>
