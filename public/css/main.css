@@ -205,17 +205,17 @@ margin-left: 0;
   margin-left: 5px;
 }
 
-#search { color: #fff; }
+#search { color: #000; }
 
 #search::-webkit-input-placeholder {
-  color: #666;
+  color: #ccc;
   font-family: 'Ubuntu', sans-serif;
   font-style: italic;
   font-weight: 100;
 }
 
 #search::-moz-placeholder {
-  color: #666;
+  color: #ccc;
   font-family: 'Ubuntu', sans-serif;
   font-weight: 100;
 }
