@@ -5,6 +5,8 @@
   // Define the message handler function
   function receiveMessage(event) {
 
+    console.log('event:', event);
+
     // Make sure the message posted to this window is from Coinbase
     if (event.origin == 'https://www.coinbase.com') {
       var event_type = event.data.split('|')[0];     // "coinbase_payment_complete"
