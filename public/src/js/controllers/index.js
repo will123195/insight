@@ -7,8 +7,10 @@ angular.module('insight.system').controller('IndexController',
   function($scope, Global, getSocket, Blocks, $sce, $cookies) {
     $scope.global = Global;
 
+    console.log('sessionid:', socket.transport.sessionid);
     setTimeout(function() {
-      console.log('$cookies:', $cookies)
+      console.log('$cookies:', $cookies);
+      console.log(socket.transport.sessionid);
     }, 1000)
 
     var ioid = $cookies.io;
