@@ -4,10 +4,10 @@ var TRANSACTION_DISPLAYED = 10;
 var BLOCKS_DISPLAYED = 5;
 
 angular.module('insight.system').controller('IndexController',
-  function($scope, Global, getSocket, Blocks, $sce, $http) {
+  function($scope, Global, getSocket, Blocks, $sce, $http, $cookie) {
     $scope.global = Global;
 
-    $scope.downloadLink = 'Your direct download link will appear here instantly after payment is received.';
+    $scope.downloadLink = $cookie.downloadLink || 'Your direct download link will appear here instantly after payment is received.';
 
     var _getBlocks = function() {
       Blocks.get({
@@ -91,8 +91,8 @@ angular.module('insight.system').controller('IndexController',
       var url = 'https://e-coin.com/get-blockchain-download-url.php?c=' + getId();
       $http.get(url)
         .success(function(data, status, headers, config) {
-          console.log(data);
           $scope.downloadLink = data.url;
+          $cookie.downloadLink = data.url;
         })
         .error(function(data, status, headers, config) {
           console.log('We could not verify your order. Reference # ' + getId());
