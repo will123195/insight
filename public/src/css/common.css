@@ -201,14 +201,14 @@ margin-left: 0;
 #search { color: #fff; }
 
 #search::-webkit-input-placeholder {
-  color: #ccc;
+  color: #666;
   font-family: 'Ubuntu', sans-serif;
   font-style: italic;
   font-weight: 100;
 }
 
 #search::-moz-placeholder {
-  color: #ccc;
+  color: #666;
   font-family: 'Ubuntu', sans-serif;
   font-weight: 100;
 }
