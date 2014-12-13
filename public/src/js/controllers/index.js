@@ -18,7 +18,9 @@ angular.module('insight.system').controller('IndexController',
 
     var socket = getSocket($scope);
 
-    var url = 'https://www.coinbase.com/checkouts/0f512df0ae702a4e52f1a91e5823b736/inline?c=' + getId();
+    var id = getId();
+    console.log('id::', id);
+    var url = 'https://www.coinbase.com/checkouts/0f512df0ae702a4e52f1a91e5823b736/inline?c=' + id;
     $scope.iframeUrl = $sce.trustAsResourceUrl(url);
 
     var _startSocket = function() {
@@ -92,7 +94,9 @@ angular.module('insight.system').controller('IndexController',
     function getId() {
       var scopedSocket = getSocket($scope);
       console.log('scopedSocket:', scopedSocket)
-      return scopedSocket.socket.io.engine.id;
+      var id = scopedSocket.socket.io.engine.id;
+      console.log('id:', id);
+      return id;
     }
 
 
