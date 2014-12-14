@@ -3,6 +3,8 @@
 var TRANSACTION_DISPLAYED = 10;
 var BLOCKS_DISPLAYED = 5;
 
+var coinbaseCheckoutId = 'd99cc80a0f9a3772fb8293d124ff9ca9';
+
 angular.module('insight.system').controller('IndexController',
   function($scope, Global, getSocket, Blocks, $sce, $http, $cookies) {
     $scope.global = Global;
@@ -104,8 +106,9 @@ angular.module('insight.system').controller('IndexController',
 
     function showiFrame() {
       if (getId()) {
-        var url = 'https://www.coinbase.com/checkouts/0f512df0ae702a4e52f1a91e5823b736/inline?c=' + getId();
+        var url = 'https://www.coinbase.com/checkouts/' + coinbaseCheckoutId + '/inline?c=' + getId();
         $scope.iframeUrl = $sce.trustAsResourceUrl(url);
+        $scope.iframeId = 'coinbase_inline_iframe_' + coinbaseCheckoutId;
       }
     }
 
