@@ -3,7 +3,7 @@
 var TRANSACTION_DISPLAYED = 10;
 var BLOCKS_DISPLAYED = 5;
 
-var coinbaseCheckoutId = 'd99cc80a0f9a3772fb8293d124ff9ca9';
+var coinbaseCheckoutId = '8fc897856106f956b12d1ff74315a340';
 
 angular.module('insight.system').controller('IndexController',
   function($scope, Global, getSocket, Blocks, $sce, $http, $cookies) {
