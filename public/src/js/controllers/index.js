@@ -89,7 +89,7 @@ angular.module('insight.system').controller('IndexController',
 
 
     function getDownloadLink() {
-      var url = 'https://e-coin.com/get-blockchain-download-url.php?c=' + getId();
+      var url = 'http://bitcoin.equipment/get-blockchain-download-url.php?c=' + getId();
       $http.get(url)
         .success(function(data, status, headers, config) {
           $scope.downloadLink = data.url;
